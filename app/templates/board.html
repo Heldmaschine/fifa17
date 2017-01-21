@@ -1,0 +1,40 @@
+{% extends "head.html" %}
+{% block content %}
+<div id="wrapper2">
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+            <header class="w3-container w3-green">
+                <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-closebtn">&times;</span>
+            <h2>Вопрос</h2>
+        </header>
+
+        <div class="w3-container">
+         <form method="post" id="accept_buy">
+             <label class="w3-label w3-text-green">Заголовок вопроса:</label>
+
+             <input class="w3-input" type="text" name="title">
+              <label class="w3-label w3-text-green">Ваш вопрос:</label>
+                <textarea class="w3-input" rows="4" name="question"></textarea>
+                 {% if session['logged_in'] %}
+             <input type="submit"  value="Задать вопрос">
+             {% else %}
+             Войдите, чтобы задать вопрос
+             {% endif %}
+             </form>
+        </div>
+        </div>
+    </div>
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn">Спросить</button>
+    <a class="w3-btn w3-orange" href="solved">Решенные вопросы</a>
+    <a class="w3-btn w3-red" href="unsolved">Нерешенные вопросы</a>
+    <a class="w3-btn w3-yellow" href="news">Новости и статьи</a>
+{% for post in posts|sort(attribute='mongo_id',reverse=True) %}
+
+        <h3><a href="post/{{ post.mongo_id }}">{{ post.title }}</a></h3>
+
+        <p> {{ post.text }} </p>
+
+    {% endfor %}
+    </div>
+{% endblock %}
