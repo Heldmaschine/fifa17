@@ -9,4 +9,4 @@ db = SQLAlchemy(app)
 mdb = MongoAlchemy(app)
 db.Model.metadata.reflect(db.engine)
 
-from app import views#, models, mongo_models
+from app import views, mongo_models, models

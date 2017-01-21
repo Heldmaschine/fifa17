@@ -16,10 +16,10 @@
              <input class="w3-input" type="text" name="title">
               <label class="w3-label w3-text-green">Ваш вопрос:</label>
                 <textarea class="w3-input" rows="4" name="question"></textarea>
-                 {% if session['logged_in'] %}
-             <input type="submit"  value="Задать вопрос">
+             {% if session['logged_in'] %}
+                <input type="submit"  value="Задать вопрос">
              {% else %}
-             Войдите, чтобы задать вопрос
+                Войдите, чтобы задать вопрос
              {% endif %}
              </form>
         </div>
@@ -29,7 +29,7 @@
     <a class="w3-btn w3-orange" href="solved">Решенные вопросы</a>
     <a class="w3-btn w3-red" href="unsolved">Нерешенные вопросы</a>
     <a class="w3-btn w3-yellow" href="news">Новости и статьи</a>
-{% for post in posts|sort(attribute='mongo_id',reverse=True) %}
+    {% for post in posts|sort(attribute='mongo_id',reverse=True) %}
 
         <h3><a href="post/{{ post.mongo_id }}">{{ post.title }}</a></h3>
 

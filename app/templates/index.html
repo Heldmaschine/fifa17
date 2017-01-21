@@ -50,14 +50,15 @@
         <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
     </div>
     <script>
-    function clickCount(){
-    if (localStorage.clickcount) {
-    localStorage.clickcount = Number(localStorage.clickcount) + 1;
-    } else {
-    localStorage.clickcount = 1;
-    }
-    document.getElementById("result").innerHTML = "You have clicked this button " +
-    localStorage.clickcount + " time(s) in your lifetime";
+    function clickCount() {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount) + 1;
+        }
+        else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "You have clicked this button " +
+        localStorage.clickcount + " time(s) in your lifetime";
     }
     </script>
 {% endblock %}

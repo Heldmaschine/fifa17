@@ -79,6 +79,11 @@ ul.navbar li .dropdown-content a:hover {
   }
 }
 @media screen and (max-width: 640px) {
+  #navMob {
+    display: none;
+  }
+}
+@media screen and (max-width: 640px) {
   ul.navbar.responsive {
     position: relative;
   }
@@ -152,6 +157,10 @@ h2, h4 {
   font-weight: normal;
 }
 
+#loginwrap
+{
+  padding: 64px 0px;
+}
 /*
 ------------------------------------------------------------
 Font Awesome scss

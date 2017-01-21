@@ -2,7 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8">
+  {% if title is defined %}
   <title>{{ title }} - MOLOKOZAVOD</title>
+  {% else %}
+  <title>MOLOKOZAVOD</title>
+  {% endif %}
   <meta name="description" content="Best molokozavod in da world!">
   <meta name="keywords" content="Best, molokozavod">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,14 +34,14 @@
             <li class="dropdown">
                 <a href="#login">Account</a>
                 <div class="dropdown-content">
-                    <a href="#">Login</a>
-                    <a href="#">Register</a>
+                    <a href="{{ url_for('login_page') }}">Login</a>
+                    <a href="{{ url_for('register_page') }}">Register</a>
                 </div>
             </li>
             <li class="dropdown">
                 <a href="#contact">Support</a>
                 <div class="dropdown-content">
-                    <a href="#">Forum</a>
+                    <a href="{{ url_for('board', category = 'all') }}">Forum</a>
                     <a href="#">Link 2</a>
                     <a href="#">Link 3</a>
                 </div>

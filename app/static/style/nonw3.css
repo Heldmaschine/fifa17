@@ -5,6 +5,7 @@
 .green,.hover-green:hover{color:#fff!important;background-color:#4CAF50!important}
 .text-green,.hover-text-green:hover{color:#4CAF50!important}
 .topbar,.bottombar{position:fixed;width:100%;z-index:1}.topbar{top:0}.bottombar{bottom:0}
+.w3-label{ color:#024841; }
 /*.navbar {background-color:#ccc;color:#000}*/
 /*.topbar a{padding:0 8px;border-bottom:3px solid transparent;-webkit-transition:border-bottom .3s;transition:border-bottom .3s}
 .topbar a:hover{border-bottom:3px solid #fff}.topbar .dropdown-hover a{border-bottom:0}

@@ -1,0 +1,22 @@
+{% extends "head.html" %}
+{% block content %}
+
+<div id="loginwrap">
+<div class="w3-container green">
+  <h2>Sign in</h2>
+</div>
+      <form action=""  method="post" class="w3-container w3-padding-16">
+          <label>Username</label>
+        <input type="text"  class="w3-input"  name="username" value="{{
+          request.form.username }}">
+          <label>Password</label>
+         <input type="password" class="w3-input"  name="password" value="{{
+          request.form.password }}">
+          <button class="w3-btn  w3-green w3-margin">Login</button>
+      </form>
+  {% if error %}
+        <p class="error"><strong>There was an error:</strong> {{ error }}</p>
+      {% endif %}
+ <br><p>Need an account?  Sign up <a href='/register'>here</a>.</p>
+</div>
+{% endblock %}

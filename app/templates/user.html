@@ -1,0 +1,69 @@
+{% extends "head.html" %}
+{% block content %}
+<div id="wrapper2">
+    <h2>{{ user_data[0] }}</h2>
+    e-mail: {{ user_data[1] }}<br>
+
+    username: {{ user_data[2] }}<br>
+    {% if user_bills==[] %}
+    Вы ещё ничего не купили
+    {% else %}
+
+    <table>
+        <tr>
+            <th>Цветок</th>
+            <th>Количество</th>
+            <th>Адрес</th>
+            <th>Дата доставки</th>
+        </tr>
+        {% for item in user_bills %}
+        <tr>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+    <br>
+    {% if posts==[] %}
+    Вы ещё ничего не писали на форуме
+    {% else %}
+
+    <table>
+        <tr>
+            <th>Пост</th>
+
+        </tr>
+        {% for post in posts %}
+        <tr>
+            <td><a href="/board/post/{{post.mongo_id}}">{{ post.title }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+    <br>
+    {% if comments==[] %}
+    Вы ещё ничего не комментировали на форуме
+    {% else %}
+
+    <table>
+        <tr>
+            <th>Коммент</th>
+            <th>Пост</th>
+
+        </tr>
+        {% for comment in comments %}
+        <tr>
+            <td>{{ comment.text }}</td>
+            <td><a href="/board/post/{{comment.post.mongo_id}}">{{ comment.post.title }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% endif %}
+    </div>
+{% endblock %}

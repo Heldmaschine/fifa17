@@ -1,0 +1,32 @@
+
+{% extends "head.html" %}
+{% block content %}
+<div id="loginwrap">
+
+
+		{% from "_formhelpers.html" import render_field %}
+	<div class="w3-card-4">
+	<div class="w3-container w3-green">
+		<h2>Register</h2>
+	</div>
+
+		<form class="w3-container w3-padding-16" method=post action="/register/">
+
+				{{render_field(form.username)}}
+				{{render_field(form.email)}}
+                {{render_field(form.name)}}
+				{{render_field(form.password)}}
+				{{render_field(form.confirm)}}
+				{{render_field(form.accept_tos)}}
+
+			<p><input class="w3-btn  w3-green w3-margin" type=submit value=Register></p>
+		</form>
+
+	</div>
+
+		{% if error %}
+			<p class="error"><strong>Error:</strong>{{error}}</p>
+		{% endif %}
+	</div>
+
+{% endblock %}
