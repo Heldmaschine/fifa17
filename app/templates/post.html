@@ -1,0 +1,27 @@
+{% extends "head.html" %}
+{% block content %}
+
+<div id="loginwrap">
+    <div class="w3-panel w3-green ">
+        <h3>{{ post.title }}</h3>
+    </div>
+    <p>{{post.text}}</p>
+    <div class="w3-border-left">
+        <p>Комментарии:</p>
+
+         {% if session['logged_in'] %}
+    <form method="post">
+              <label class="w3-label w3-text-green">Ваш комментарий:</label>
+                <textarea class="w3-input" rows="4" name="comment"></textarea>
+             <input class="w3-btn  w3-green w3-margin" type="submit"  value="Оставить комментарий">
+    </form>
+    {% else %}
+    Вы не зарегестрированы
+    {% endif %}
+    {% for comment in comments %}
+    <p><b>{{comment.author}}:</b> {{comment.text}}</p>
+    {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

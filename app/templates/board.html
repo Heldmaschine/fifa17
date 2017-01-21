@@ -1,6 +1,6 @@
 {% extends "head.html" %}
 {% block content %}
-<div id="wrapper2">
+<div id="loginwrap">
     <div id="id01" class="w3-modal">
         <div class="w3-modal-content">
             <header class="w3-container w3-green">
@@ -17,7 +17,7 @@
               <label class="w3-label w3-text-green">Ваш вопрос:</label>
                 <textarea class="w3-input" rows="4" name="question"></textarea>
              {% if session['logged_in'] %}
-                <input type="submit"  value="Задать вопрос">
+                <input class="w3-btn  w3-green w3-margin" type="submit"  value="Задать вопрос">
              {% else %}
                 Войдите, чтобы задать вопрос
              {% endif %}
