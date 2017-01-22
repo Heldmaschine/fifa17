@@ -100,22 +100,32 @@ def post(id):
     return render_template("post.html", title=post.title, post=post, comments=comments)
 
 
-@app.route('/user_page/')
+@app.route('/account/')
 def user_page():
     user_data = User.query.with_entities(User.name, User.email,
                                          User.username).filter_by(username=session['username']).first()
-    user_bills = db.session.query(Bill, Product).with_entities(Bill.amount, Bill.delivery_place, Product.id,
-                                                               Bill.delivery_date).filter_by(
-        username=session['username']).filter_by(id=Product.id).all()
+    #user_bills = db.session.query(Bill, Product).with_entities(Bill.amount, Bill.delivery_place, Product.id,
+    #                                                           Bill.delivery_date).filter_by(
+    #    username=session['username']).filter_by(id=Product.id).all()
     user_posts = Post.query.filter(Post.author == session['username']).all()
-    print(user_posts)
+    #print(user_posts)
     user_comments = Comment.query.filter(
         Comment.author == session['username']).all()
     # print(user_comments)
     return render_template("user.html", title=user_data[2], user_data=user_data,
-                           user_bills=user_bills, posts=user_posts, comments=user_comments)
+                           #user_bills=user_bills,
+                           posts=user_posts, comments=user_comments)
 
 
+@app.route('/history')
+def history():
+    return render_template("history.html", title='And there were History')
+
+
+@app.route('/comingsoon')
+def coming_soon():
+    return render_template("coming_soon.html", title='Coming soon!')
+'''
 @app.route('/<category>/', methods=["GET", "POST"])
 def Products(category):
     title = Category.query.filter_by(url=category).first()
@@ -163,3 +173,4 @@ def Product_view(category, Product):
             resp.set_cookie('list_to_buy', value=json.dumps(Product_list))
             return resp
     return render_template("page.html", title=Product[0], Product=Product)
+'''

@@ -1,0 +1,52 @@
+{% extends "head.html" %}
+{% block content %}
+<header class="w3-container green w3-center w3-padding-128">
+        <h1 class="w3-margin w3-jumbo">Coming soon!</h1>
+        <p class="w3-xlarge">It may be here in future so stay tuned!</p>
+        <p>	You can enjoy canvas below for the time being:	</p>
+        </header>
+        <canvas id="myCanvas" width="240" height="297"
+        class="" accesskey="">
+        Your browser does not support the HTML5 canvas tag.
+        </canvas>
+        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"/>
+        <script>
+$(function(){
+
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+
+    function drawStar(cx,cy,spikes,outerRadius,innerRadius){
+      var rot=Math.PI/2*3;
+      var x=cx;
+      var y=cy;
+      var step=Math.PI/spikes;
+
+      ctx.beginPath();
+      ctx.moveTo(cx,cy-outerRadius)
+      for(i=0;i<spikes;i++){
+        x=cx+Math.cos(rot)*outerRadius;
+        y=cy+Math.sin(rot)*outerRadius;
+        ctx.lineTo(x,y)
+        rot+=step
+
+        x=cx+Math.cos(rot)*innerRadius;
+        y=cy+Math.sin(rot)*innerRadius;
+        ctx.lineTo(x,y)
+        rot+=step
+      }
+      ctx.lineTo(cx,cy-outerRadius);
+      ctx.closePath();
+      ctx.lineWidth=5;
+      ctx.strokeStyle='blue';
+      ctx.stroke();
+      ctx.fillStyle='skyblue';
+      ctx.fill();
+    }
+
+    drawStar(100,100,5,30,15);
+
+}); // end $(function(){});
+</script>
+
+{% endblock %}

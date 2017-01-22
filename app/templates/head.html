@@ -54,16 +54,16 @@
             <li class="dropdown">
                 <a href="#news">About</a>
                 <div class="dropdown-content">
-                    <a href="#">History</a>
-                    <a href="#">Services</a>
+                    <a href="{{ url_for('history') }}">History</a>
+                    <a class="disabled" href="#">Services (soon)</a>
                     <a href="#">Contact us</a>
                 </div>
             </li>
             <li class="dropdown">
                 <a href="#store">Store</a>
                 <div class="dropdown-content">
-                    <a href="#">Milks</a>
-                    <a href="#">Merch</a>
+                    <a href="{{ url_for('coming_soon') }}">Milks (soon)</a>
+                    <a class="disabled" href="#">Merch (soon)</a>
                 </div>
             </li>
 
@@ -77,8 +77,8 @@
         <!-- Navbar on small screens -->
         <nav id="navMob" class="hide">
             <ul class="navbar responsive left-align w3-large black">
-                <li><a class="w3-padding-large" href="#">Store</a></li>
-                <li><a class="w3-padding-large" href="#">About</a></li>
+                <li><a class="w3-padding-large" href="{{ url_for('coming_soon') }}">Store</a></li>
+                <li><a class="w3-padding-large" href="{{ url_for('history') }}">About</a></li>
                 <li><a class="w3-padding-large" href="{{ url_for('board', category = 'all') }}">Forum</a></li>
                 <li><a class="w3-padding-large" href="{{ url_for('login_page') }}">Login</a></li>
                 <li><a class="w3-padding-large" href="{{ url_for('register_page') }}">Register</a></li>
