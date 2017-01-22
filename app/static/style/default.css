@@ -1,5 +1,6 @@
 body, .h6, .h5, .h4, .h3, .h2 {
   font-family: "Lato", sans-serif;
+  word-wrap: break-word;
 }
 
 h1, ul.navbar {
@@ -65,6 +66,7 @@ ul.navbar li .dropdown-content a {
   text-decoration: none;
   display: block;
   text-align: left;
+  word-wrap: break-word;
 }
 ul.navbar li .dropdown-content a:hover {
   background-color: #555;
@@ -158,8 +160,12 @@ h2, h4 {
   font-weight: normal;
 }
 
-#loginwrap
-{
+#bCow {
+  background-image: url("../image/cow.jpg");
+  background-size: cover;
+}
+
+#loginwrap {
   padding: 64px 2px;
 }
 
