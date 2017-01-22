@@ -7,16 +7,16 @@
     </div>
     <p>{{post.text}}</p>
     <div class="w3-border-left">
-        <p>Комментарии:</p>
+        <p>Comments:</p>
 
          {% if session['logged_in'] %}
     <form method="post">
               <label class="w3-label w3-text-green">Ваш комментарий:</label>
-                <textarea class="w3-input" rows="4" name="comment"></textarea>
-             <input class="w3-btn  w3-green w3-margin" type="submit"  value="Оставить комментарий">
+                <textarea class="w3-input w3-border" rows="4" placeholder="Your comment" name="comment"></textarea>
+             <input class="w3-btn  w3-green w3-margin" type="submit"  value="Submit"/>
     </form>
     {% else %}
-    Вы не зарегестрированы
+    Please <a href="{{ url_for('login_page') }}">log in</a> to comment
     {% endif %}
     {% for comment in comments %}
     <p><b>{{comment.author}}:</b> {{comment.text}}</p>

@@ -11,29 +11,29 @@
 
         <div class="w3-container">
          <form method="post" id="accept_buy">
-             <label class="w3-label w3-text-green">Заголовок вопроса:</label>
+             <label class="w3-label w3-text-green">Title:</label>
 
              <input class="w3-input" type="text" name="title">
-              <label class="w3-label w3-text-green">Ваш вопрос:</label>
-                <textarea class="w3-input" rows="4" name="question"></textarea>
+              <label class="w3-label w3-text-green">Question:</label>
+                <textarea class="w3-input" rows="4" placeholder="Write your question" name="question"></textarea>
              {% if session['logged_in'] %}
                 <input class="w3-btn  w3-green w3-margin" type="submit"  value="Задать вопрос">
              {% else %}
-                Войдите, чтобы задать вопрос
+                Please <a href="{{ url_for('login_page') }}">log in</a> to ask
              {% endif %}
              </form>
         </div>
         </div>
     </div>
-    <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn">Спросить</button>
-    <a class="w3-btn w3-orange" href="solved">Решенные вопросы</a>
-    <a class="w3-btn w3-red" href="unsolved">Нерешенные вопросы</a>
-    <a class="w3-btn w3-yellow" href="news">Новости и статьи</a>
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn">Ask</button>
+    <a class="w3-btn w3-orange" href="solved">Solved</a>
+    <a class="w3-btn w3-red" href="unsolved">Issues</a>
+    <a class="w3-btn w3-yellow" href="news">News</a>
     {% for post in posts|sort(attribute='mongo_id',reverse=True) %}
 
         <h3><a href="post/{{ post.mongo_id }}">{{ post.title }}</a></h3>
 
-        <p> {{ post.text }} </p>
+        <article> {{ post.text }} </article>
 
     {% endfor %}
     </div>

@@ -8,7 +8,7 @@
   <title>MOLOKOZAVOD</title>
   {% endif %}
   <meta name="description" content="Best molokozavod in da world!">
-  <meta name="keywords" content="Best, molokozavod">
+  <meta name="keywords" content="Best, molokozavod, milk, buy milk, cheap, cheapest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://use.fontawesome.com/206d4c7b86.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -18,12 +18,12 @@
   <link href={{url_for('static', filename="style/default.css")}} rel="stylesheet" />
 
 
-  <link rel="shortcut icon" href="http://s1.iconbird.com/ico/0912/fugue/w16h161349012465flower.png">
+  <link rel="shortcut icon" href={{url_for('static', filename="image/favicon-plus-square.ico")}} />
 
 </head>
 <body>
 <header>
-  <div class="topbar">
+  <nav class="topbar">
         <ul class="navbar">
             <li>
                 <a href="{{ url_for('index') }}">
@@ -34,16 +34,21 @@
             <li class="dropdown">
                 <a href="#login">Account</a>
                 <div class="dropdown-content">
+                {% if (not (session['logged_in'])) or (not (session['logged_in'] is defined)) %}
                     <a href="{{ url_for('login_page') }}">Login</a>
                     <a href="{{ url_for('register_page') }}">Register</a>
+                {% else %}
+                    <a href="{{ url_for('user_page') }}">{{ session['username'] }}</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% endif %}
                 </div>
             </li>
             <li class="dropdown">
                 <a href="#contact">Support</a>
                 <div class="dropdown-content">
                     <a href="{{ url_for('board', category = 'all') }}">Forum</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <a href="{{ url_for('board', category = 'unsolved') }}">Issues</a>
+                    <a href="{{ url_for('board', category = 'news') }}">News</a>
                 </div>
             </li>
             <li class="dropdown">
@@ -57,8 +62,8 @@
             <li class="dropdown">
                 <a href="#store">Store</a>
                 <div class="dropdown-content">
-                    <a href="#">Milks</a>s
-                    <a href="#">Not milks</a>
+                    <a href="#">Milks</a>
+                    <a href="#">Merch</a>
                 </div>
             </li>
 
@@ -70,7 +75,7 @@
         </ul>
 
         <!-- Navbar on small screens -->
-        <div id="navMob" class="hide">
+        <nav id="navMob" class="hide">
             <ul class="navbar responsive left-align w3-large black">
                 <li><a class="w3-padding-large" href="#">Link 1</a></li>
                 <li><a class="w3-padding-large" href="#">Link 2</a></li>
@@ -78,8 +83,8 @@
                 <li><a class="w3-padding-large" href="{{ url_for('login_page') }}">Login</a></li>
                 <li><a class="w3-padding-large" href="{{ url_for('register_page') }}">Register</a></li>
             </ul>
-        </div>
-    </div>
+        </nav>
+    </nav>
     <script>
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {

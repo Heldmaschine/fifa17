@@ -53,6 +53,7 @@ ul.navbar li.dropdown:hover .dropdown-content {
 }
 ul.navbar li .dropdown-content {
   display: none;
+  float: right;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
@@ -159,8 +160,21 @@ h2, h4 {
 
 #loginwrap
 {
-  padding: 64px 0px;
+  padding: 64px 2px;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#f5f5f5}
 /*
 ------------------------------------------------------------
 Font Awesome scss
