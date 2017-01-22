@@ -5,48 +5,27 @@
         <p class="w3-xlarge">It may be here in future so stay tuned!</p>
         <p>	You can enjoy canvas below for the time being:	</p>
         </header>
-        <canvas id="myCanvas" width="240" height="297"
-        class="" accesskey="">
-        Your browser does not support the HTML5 canvas tag.
+        <canvas id="myCanvas">
+       		Your browser does not support the HTML5 canvas tag.
         </canvas>
-        <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"/>
-        <script>
-$(function(){
+		<script>
+			var canv = document.getElementById("myCanvas"),
+			    ctx     = canv.getContext('2d');
+			canv.height = 480;
+			canv.width  = 640;
+			ctx.strokeStyle = '#4d5b52'; // меняем цвет рамки
+			ctx.strokeRect(15, 15, 266, 266);
+			ctx.strokeRect(18, 18, 260, 260);
+			ctx.fillStyle = '#42f480'; // меняем цвет клеток
+			ctx.fillRect(20, 20, 256, 256);
+			for (i = 0; i < 8; i += 2)
+				for (j = 0; j < 8; j += 2) {
+					ctx.clearRect(20 + i * 32, 20 + j * 32, 32, 32);
+					ctx.clearRect(20 + (i + 1) * 32, 20 + (j + 1) * 32, 32, 32);
+				}
 
-    var canvas=document.getElementById("canvas");
-    var ctx=canvas.getContext("2d");
+		</script>
 
-    function drawStar(cx,cy,spikes,outerRadius,innerRadius){
-      var rot=Math.PI/2*3;
-      var x=cx;
-      var y=cy;
-      var step=Math.PI/spikes;
-
-      ctx.beginPath();
-      ctx.moveTo(cx,cy-outerRadius)
-      for(i=0;i<spikes;i++){
-        x=cx+Math.cos(rot)*outerRadius;
-        y=cy+Math.sin(rot)*outerRadius;
-        ctx.lineTo(x,y)
-        rot+=step
-
-        x=cx+Math.cos(rot)*innerRadius;
-        y=cy+Math.sin(rot)*innerRadius;
-        ctx.lineTo(x,y)
-        rot+=step
-      }
-      ctx.lineTo(cx,cy-outerRadius);
-      ctx.closePath();
-      ctx.lineWidth=5;
-      ctx.strokeStyle='blue';
-      ctx.stroke();
-      ctx.fillStyle='skyblue';
-      ctx.fill();
-    }
-
-    drawStar(100,100,5,30,15);
-
-}); // end $(function(){});
 </script>
 
 {% endblock %}
