@@ -5,8 +5,8 @@ class User(db.Model):
 	__table__ = db.Model.metadata.tables['users']
 	id = __table__.c.id
 	username = __table__.c.login
-	fname = __table__.c.fname
-	lname = __table__.c.lname
+	fname = __table__.c.firstname
+	lname = __table__.c.lastname
 	email = __table__.c.email
 	phone = __table__.c.phone
 	paycheck = __table__.c.pay_check
