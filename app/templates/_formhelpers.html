@@ -1,7 +1,7 @@
 {% macro render_field(field) %}
 
   <label class="w3-label">{{ field.label }}</label>
-  {{ field(class="w3-input", **kwargs)|safe }}
+  {{ field(class="w3-input")|safe }}
   {% if field.errors %}
     <ul class=errors>
     {% for error in field.errors %}
