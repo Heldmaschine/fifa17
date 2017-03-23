@@ -21,12 +21,16 @@ def register_page():
         if request.method == "POST" and form.validate():
             username = form.username.data
             email = form.email.data
-            name = form.name.data
+            fname = form.fname.data
+            lname = form.lname.data
+            phone = form.phone.data
+            university = form.university.data
+            paycheck = form.paycheck.data
             password = sha256_crypt.encrypt((str(form.password.data)))
             if User.query.filter_by(username=username).first():
                 return render_template('register.html', form=form)
             else:
-                db.session.add(User(username, email, name, password))
+                db.session.add(User(username, email, password, fname, lname, phone, university, paycheck))
                 db.session.commit()
                 session['logged_in'] = True
                 session['username'] = username

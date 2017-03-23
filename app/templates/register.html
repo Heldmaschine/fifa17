@@ -1,6 +1,8 @@
 
 {% extends "master.html" %}
 {% block body %}
+
+    {% from "_formhelpers.html" import render_field %}
 <style type="text/css">
   @import url(http://fonts.googleapis.com/css?family=Roboto);
 
@@ -110,21 +112,36 @@ body {
         <div class="modal-dialog">
         <div class="loginmodal-container">
           <h1>Apply to tournament</h1><br>
-          <form method = "post">
+          <form method=post action="/register/">
+
+        {{render_field(form.username)}}
+        {{render_field(form.email)}}
+        {{render_field(form.password)}}
+        {{render_field(form.confirm)}}
+        {{render_field(form.fname)}}
+        {{render_field(form.lname)}}
+        {{render_field(form.phone)}}
+        {{render_field(form.university)}}
+        <label class="radio-inline"><input type="radio" name="optradio" value="0">Cash</label>
+        <label class="radio-inline"><input type="radio" name="optradio" value="1">E-check</label>
+        {{render_field(form.paycheck)}}
+<!--          <form method = "post">
           <input type="text" name="user" placeholder="Username">
+          <input type="text" name="email" placeholder="E-mail">
           <input type="password" name="pass" placeholder="Password">
-          <!--<input type="password" name="passrep" placeholder="Repeat Password">-->
+          <input type="password" name="passrep" placeholder="Repeat Password">
           <input type="text" name="fname" placeholder="Firstname">
           <input type="text" name="lname" placeholder="Lastname">
 		  <input type="text" name="univ" placeholder="Unversity">
   		  <input type="text" name="phone" placeholder="Phone">
 		  <label> Payment method:</label>
-		  <label class="radio-inline"><input type="radio" name="optradio" value="0">Cash</label>
-		  <label class="radio-inline"><input type="radio" name="optradio" value="1">E-check</label>
-		  <input type="text" name="paycheck" placeholder="Payheck number" id="cheknum">		                              
+
+		  <input type="text" name="paycheck" placeholder="Payheck number" id="cheknum">-->		                              
           <input type="submit" name="register" class="login loginmodal-submit" value="Submit">
           </form>
-          
+          {% if error %}
+          <p class="error"><strong>Error:</strong>{{error}}</p>
+          {% endif %}
           <div class="login-help">
           <a href="/login">Login</a>
           </div>
@@ -132,15 +149,15 @@ body {
         </div>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#cheknum").hide();
+		$("#paycheck").hide();
     $("input[name$='optradio']").click(function() {
         var test = $(this).val();
         if (test == 1)
         {
-        	$("#cheknum").show();
+        	$("#paycheck").show();
         }
         else {
-        	$("#cheknum").hide();
+        	$("#paycheck").hide();
         }
     });
 });
